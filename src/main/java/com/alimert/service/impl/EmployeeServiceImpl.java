@@ -2,6 +2,9 @@ package com.alimert.service.impl;
 
 import com.alimert.dto.DtoDepartment;
 import com.alimert.dto.DtoEmployee;
+import com.alimert.exception.BaseException;
+import com.alimert.exception.ErrorMessage;
+import com.alimert.exception.MessageType;
 import com.alimert.model.Department;
 import com.alimert.model.Employee;
 import com.alimert.repository.EmployeeRepository;
@@ -24,7 +27,7 @@ public class EmployeeServiceImpl implements IEmployeeService {
         DtoDepartment dtoDepartment = new DtoDepartment();
         Optional<Employee> optional = employeeRepository.findById(id);
         if(optional.isEmpty()) {
-            return null;
+            throw new BaseException(new ErrorMessage(MessageType.NO_RECORD_EXIST, id.toString()));
         }
 
         Employee employee = optional.get();
