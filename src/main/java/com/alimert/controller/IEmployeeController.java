@@ -1,7 +1,8 @@
 package com.alimert.controller;
 
 import com.alimert.dto.DtoEmployee;
+import com.alimert.model.RootEntity;
 
 public interface IEmployeeController {
-    public DtoEmployee findEmployeeById(Long id);
+    public RootEntity<DtoEmployee> findEmployeeById(Long id);
 }
